@@ -1,4 +1,5 @@
 using FluentAssertions;
+using FluentAssertions.Execution;
 using FluentAssertionsDemo.ToAssert;
 using FluentAssertions.Json;
 using Newtonsoft.Json.Linq;
@@ -16,6 +17,20 @@ namespace FluentAssertionsDemo.Test
             instance.LengthInM.Should().Be(expectedLengthInM);
             instance.Bmi.Should().Be(expectedBmi);
             instance.WeighthInKg.Should().Be(weightInKg);
+        }
+
+        [Theory]
+        [InlineData(70.01, 180, 1.80, 21.61)]
+        public void ScopeTest(decimal weightInKg, int lengthInCm, decimal expectedLengthInM, decimal expectedBmi)
+        {
+            var instance = new HealthDescription(weightInKg, lengthInCm);
+            using (new AssertionScope())
+            {
+                instance.LengthInM.Should().Be(expectedLengthInM);
+                instance.Bmi.Should().Be(expectedBmi);
+                instance.WeighthInKg.Should().Be(weightInKg);
+            }
+            
         }
 
         [Theory]
