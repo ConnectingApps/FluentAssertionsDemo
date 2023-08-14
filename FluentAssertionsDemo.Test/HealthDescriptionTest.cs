@@ -30,7 +30,6 @@ namespace FluentAssertionsDemo.Test
                 instance.Bmi.Should().Be(expectedBmi);
                 instance.WeighthInKg.Should().Be(weightInKg);
             }
-            
         }
 
         [Theory]
@@ -54,9 +53,7 @@ namespace FluentAssertionsDemo.Test
         public void RegularJsonTest(decimal weightInKg, int lengthInCm, string expectedResult)
         {
             var instance = new HealthDescription(weightInKg, lengthInCm);
-            JToken resultToken = JToken.FromObject(instance);
-            var expectedToken = JToken.Parse(expectedResult);
-            resultToken.Should().BeEquivalentTo(expectedToken);
+            JToken.FromObject(instance).Should().BeEquivalentTo(JToken.Parse(expectedResult));
         }
     }
 }
