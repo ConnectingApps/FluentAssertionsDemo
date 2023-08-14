@@ -6,13 +6,13 @@ namespace FluentAssertionsDemo.ToAssert
     {
         public decimal LengthInM { get; }
 
-        public decimal WeighthInKg { get; }
+        public decimal WeightInKg { get; }
 
         public decimal Bmi { get;  }
 
         public HealthDescription(decimal weightInKg, int lengthInCm)
         {
-            WeighthInKg = weightInKg;
+            WeightInKg = weightInKg;
             LengthInM = (decimal)lengthInCm / 100;
             Bmi = Math.Round(weightInKg / (LengthInM * LengthInM), 2);
         }

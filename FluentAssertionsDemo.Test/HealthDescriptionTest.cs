@@ -16,7 +16,7 @@ namespace FluentAssertionsDemo.Test
             var instance = new HealthDescription(weightInKg, lengthInCm);
             instance.LengthInM.Should().Be(expectedLengthInM);
             instance.Bmi.Should().Be(expectedBmi);
-            instance.WeighthInKg.Should().Be(weightInKg);
+            instance.WeightInKg.Should().Be(weightInKg);
         }
 
         [Theory]
@@ -28,7 +28,7 @@ namespace FluentAssertionsDemo.Test
             {
                 instance.LengthInM.Should().Be(expectedLengthInM);
                 instance.Bmi.Should().Be(expectedBmi);
-                instance.WeighthInKg.Should().Be(weightInKg);
+                instance.WeightInKg.Should().Be(weightInKg);
             }
         }
 
@@ -37,7 +37,7 @@ namespace FluentAssertionsDemo.Test
         public void ValueTupleTest(decimal weightInKg, int lengthInCm, decimal expectedLengthInM, decimal expectedBmi)
         {
             var instance = new HealthDescription(weightInKg, lengthInCm);
-            (instance.LengthInM, instance.Bmi, instance.WeighthInKg).Should()
+            (instance.LengthInM, instance.Bmi, WeighthInKg: instance.WeightInKg).Should()
                 .Be((expectedLengthInM, expectedBmi, weightInKg));
         }
 
@@ -46,7 +46,7 @@ namespace FluentAssertionsDemo.Test
         [InlineData(70.01, 180, """
                              {
                                 "Bmi" : 21.61,
-                                "WeighthInKg": 70.01,
+                                "WeightInKg": 70.01,
                                 "LengthInM" : 1.80 
                              }
                              """)]
